@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Number conversions</title>
+    <link rel="stylesheet" type="text/css" href="Project.css">
+    <script>
+        function convert() {
+            var form = document.getElementById("form");
+            var input_type = form.input.value;
+            var output_type = form.output.value;
+            var number_input = form.numberInput.value;
+            var number_output = Number;
+            var condition = true;
+
+            if (input_type == "BIN") {
+                for (i of number_input) {
+                    if (isNaN(parseInt(i, 2)) && (number_input[0] != "-")) { condition = false; }
+                }
+            }
+            if (input_type == "OCT") {
+                for (i of number_input) {
+                    if (isNaN(parseInt(i, 8)) && (number_input[0] != "-")) { condition = false; }
+                }
+            }
+            if (input_type == "DEC") {
+                for (i of number_input) {
+                    if (isNaN(parseInt(i, 10)) && (number_input[0] != "-")) { condition = false; }
+                }
+            }
+            if (input_type == "HEX") {
+                for (i of number_input) {
+                    if (isNaN(parseInt(i, 16)) && (number_input[0] != "-")) { condition = false; }
+                }
+            }
+            console.log(condition);
+
+            if ((condition == false) && (input_type == "BIN")) { alert("Input is not a binary number!") }
+            if ((condition == false) && (input_type == "OCT")) { alert("Input is not a octal number!") }
+            if ((condition == false) && (input_type == "DEC")) { alert("Input is not a decimal number!") }
+            if ((condition == false) && (input_type == "HEX")) { alert("Input is not a hexadecimal number!") }
+
+            if (condition == true) {
+                if ((input_type == "BIN") && (output_type == "DEC")) {
+                    number_output = parseInt(number_input, 2);
+                }
+                if ((input_type == "DEC") && (output_type == "BIN")) {
+                    number_output = (number_input >>> 0).toString(2);
+                }
+                if ((input_type == "BIN") && (output_type == "OCT")) {
+                    number_output = parseInt(number_input, 2).toString(8);
+                }
+                if ((input_type == "OCT") && (output_type == "BIN")) {
+                    number_output = parseInt(number_input, 8).toString(2);
+                }
+                if ((input_type == "BIN") && (output_type == "HEX")) {
+                    number_output = parseInt(number_input, 2).toString(16);
+                }
+                if ((input_type == "HEX") && (output_type == "BIN")) {
+                    number_output = parseInt(number_input, 16).toString(2);
+                }
+                if ((input_type == "OCT") && (output_type == "DEC")) {
+                    number_output = parseInt(number_input, 8);
+                }
+                if ((input_type == "DEC") && (output_type == "OCT")) {
+                    number_output = (number_input >>> 0).toString(8)
+                }
+                if ((input_type == "OCT") && (output_type == "HEX")) {
+                    number_output = parseInt(number_input, 8).toString(16);
+                }
+                if ((input_type == "HEX") && (output_type == "OCT")) {
+                    number_output = parseInt(number_input, 16).toString(8);
+                }
+                if ((input_type == "DEC") && (output_type == "HEX")) {
+                    number_output = (number_input >>> 0).toString(16);
+                }
+                if ((input_type == "HEX") && (output_type == "DEC")) {
+                    number_output = parseInt(number_input, 16);
+                }
+                if (input_type == output_type) { number_output = number_input; }
+                document.getElementById("output").innerHTML = "Output: " + number_output;
+            }
+            console.log(number_output);
+            console.log("Input type: " + input_type + "\nOutput type: " + output_type);
+
+        }
+
+
+    </script>
+    <style>
+        body {
+            margin:0px;
+        }
+        #container {
+            float:right;
+            width:85%;           
+            
+
+        }
+
+        #converter {
+            max-width: 40%;
+            margin: auto;
+            font-size: 150%;
+            
+            padding: 2%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="floatingmenu">
+        <h2 style="text-align: left; padding-left: 5%;">Functions</h2>
+        <a href="Number system conversions.html" ">Number conversion</a><br>
+        <a href="Number system outputs.html" ">Number system outputs</a><br>
+        <a href="" ">Combinatorics</a><br>
+        <a href="" ">Truth tables</a><br>
+        <a href="RNG Tester.html" ">Random values</a><br>
+        <a href="" ">Design your own</a><br>
+    </div>
+    <div id="container">
+        <div id="converter">
+            <h2 style="text-align:center;">Number converter</h2>
+            <form id="form">
+                <label>Choose input type: </label>
+                <input type="radio" name="input" value="BIN">BIN
+                <input type="radio" name="input" value="OCT">OCT
+                <input type="radio" name="input" value="DEC">DEC
+                <input type="radio" name="input" value="HEX">HEX<br><br>
+                <label>Input: </label>
+                <input type="text" id="myInput" name="numberInput"><br><br>
+                <label>Choose output type: </label>
+                <input type="radio" name="output" value="BIN">BIN
+                <input type="radio" name="output" value="OCT">OCT
+                <input type="radio" name="output" value="DEC">DEC
+                <input type="radio" name="output" value="HEX">HEX<br><br>
+                <label id="output">Output: </label><br><br>
+                <button type="button" id="myBtn" onclick="convert()">Convert</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

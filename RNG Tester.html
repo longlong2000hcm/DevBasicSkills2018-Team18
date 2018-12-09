@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Project.css">
+    <script>
+        function test() {
+            var RNG = document.getElementById("RNG").elements;
+            var start = Number(RNG.start.value);
+            var end = Number(RNG.end.value) + 1;
+            class Num {
+                constructor(No, match) {
+                    this.No = No;
+                    this.match = match;
+                }
+            }
+            var number_array_objects = [];
+            var number_array = [];
+            var range = end - start;
+            for (i = start; i < end; i++) {
+                let random_number = start + Math.floor(Math.random() * range);
+                number_array.push(random_number);
+            }
+
+            /* Write number array */
+            document.getElementById("number array").innerHTML = "Numbers distribution: ";
+            for (i = 0; i < number_array.length; i++) {
+                if (i == number_array.length - 1) { document.getElementById("number array").innerHTML += number_array[i]; }
+                else { document.getElementById("number array").innerHTML += number_array[i] + ", "; }
+            }
+
+            /* Sort */
+            number_array.sort();
+            for (let i = 0; i < number_array.length; i++) {
+                console.log(number_array[i]);
+            }
+
+            /* Push number objects */
+            for (let i = 0; i < number_array.length; i++) {
+                if (number_array[i] != number_array[i - 1]) { number_array_objects.push(new Num(number_array[i], 0)) }
+            }
+
+            /* Count duplicates */
+            for (let i = 0; i < number_array_objects.length; i++) {
+                for (let k = 0; k < number_array.length; k++) {
+                    if (number_array_objects[i].No == number_array[k]) {
+                        number_array_objects[i].match = number_array_objects[i].match + 1;
+                    }
+                }
+            }
+
+
+            /* Make table */
+            document.getElementById("counting_table").innerHTML = "<tr><th>Number</th><th>Times appears</th></tr>"
+            for (i = 0; i < number_array_objects.length; i++) {
+                document.getElementById("counting_table").innerHTML += "<tr><td>" + number_array_objects[i].No
+                    + "<td>" + number_array_objects[i].match + "</td>" + "</tr>"
+            }
+
+
+
+            console.log("Start: " + start);
+            console.log("End:" + (end - 1));
+            console.log("Range: " + range);
+            console.log("Hello");
+
+        }
+    </script>
+    <style>
+
+        body {
+            margin:0px;
+        }
+        
+        #container {
+            width:85%;
+            float:right;
+        }
+        #RNG_Tester {
+            max-width: 40%;
+            margin:auto;
+            font-size: 150%;
+            text-align: center;
+            padding: 2%;
+            border: 2px black solid;
+        }
+        th,td {
+        width: 40px;
+        border: 1px black solid;
+        padding: 5px;
+        }
+        table {
+        border-spacing: 0px;
+        margin:auto;
+        background-color: lightyellow;
+        }
+        </style>
+</head>
+
+<body>
+    <div class="floatingmenu">
+        <h2 style="text-align: left; padding-left: 5%;">Functions</h2>
+        <a href="Number system conversions.html">Number conversion</a><br>
+        <a href="Number system outputs.html">Number system outputs</a><br>
+        <a href="">Combinatorics</a><br>
+        <a href="">Truth tables</a><br>
+        <a href="RNG Tester.html">Random values</a><br>
+        <a href="">Design your own</a><br>
+    </div>
+    <div id="container">
+        <div id="RNG_Tester">
+            <h2>RNG Tester</h2>
+            <form id="RNG">
+                <label>From &emsp;</label>
+                <input type="number" name="start"><br><br>
+                <label>To &emsp; &emsp;</label>
+                <input type="number" name="end" id="myInput"><br><br>
+                <div id="number array"></div><br>
+                <table id="counting_table"></table><br>
+                <button type="button" onclick="test()" id="myBtn">Test</button>
+            </form>
+            <script>
+                var input = document.getElementById("myInput");
+                input.addEventListener("keyup", function (event) {
+                    event.preventDefault();
+                    if (event.keyCode === 13) {
+                        document.getElementById("myBtn").click();
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

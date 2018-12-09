@@ -1,0 +1,39 @@
+.floatingmenu {
+    overflow: hidden;
+    position: fixed;
+    float: left;
+    width:15%;
+    height:100%;
+    text-align: left;
+   
+    background-color: lightgray;
+    color: black;
+    font-size: 150%;
+    
+    
+}
+
+.floatingmenu a {
+    display:block;
+    padding:5%;
+    color: black;
+    text-decoration: none;
+}
+
+.floatingmenu a:hover {
+    background-color: gray;
+    text-decoration: none;
+}
+
+button {
+    margin: 10px;
+    
+    font-size: 100%;
+    background-color: lightgray;
+    border: black 2px solid;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: gray;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Number system outputs</title>
+    <link rel="stylesheet" type="text/css" href="Project.css">
+    <script>
+        function myFunction() {
+            document.getElementById("tbl").innerHTML += "<tr><th>DEC</th><th>BIN</th><th>OCT</th><th>HEX</th>"
+                + "<th class=\"noborder\"></th>"
+                + "<th>DEC</th><th>BIN</th><th>OCT</th><th>HEX</th>"
+                + "<th class=\"noborder\"></th>"
+                + "<th>DEC</th><th>BIN</th><th>OCT</th><th>HEX</th>"
+                + "<th class=\"noborder\"></th>"
+                + "<th>DEC</th><th>BIN</th><th>OCT</th><th>HEX</th>"
+                + "<th class=\"noborder\"></th>"
+                + "<th>DEC</th><th>BIN</th><th>OCT</th><th>HEX</th></tr>";
+            for (i = 0; i < 11; i++) {
+                document.getElementById("tbl").innerHTML += "<tr><td>" + i + "</td><td>" +
+                    i.toString(2) + "</td><td>" + i.toString(8) + "</td><td>" + i.toString(16) + "</td>"
+                    + "<td class=\"noborder\"></td>"
+                    + "<td>" + (i + 10) + "</td><td>"
+                    + (i + 10).toString(2) + "</td><td>" + (i + 10).toString(8) + "</td><td>" + (i + 10).toString(16) + "</td>"
+                    + "<td class=\"noborder\"></td>"
+                    + "<td>" + (i + 20) + "</td><td>" +
+                    (i + 20).toString(2) + "</td><td>" + (i + 20).toString(8) + "</td><td>" + (i + 20).toString(16) + "</td>"
+                    + "<td class=\"noborder\"></td>"
+                    + "<td>" + (i + 30) + "</td><td>" +
+                    (i + 30).toString(2) + "</td><td>" + (i + 30).toString(8) + "</td><td>" + (i + 30).toString(16) + "</td>"
+                    + "<td class=\"noborder\"></td>"
+                    + "<td>" + (i + 40) + "</td><td>" +
+                    (i + 40).toString(2) + "</td><td>" + (i + 40).toString(8) + "</td><td>" + (i + 40).toString(16) + "</td></tr>"
+
+            }
+        }
+        function cleartable() {
+            document.getElementById("tbl").innerHTML = ""
+        }
+    </script>
+    <style>
+        body {
+
+            margin:0px;
+        }
+        th,
+        td {
+            
+            border: 1px solid black;
+            padding: 10px;
+
+        }
+
+        table {
+            border-spacing: 0px;
+            background-color: lightblue;
+        }
+        
+        .noborder {
+            border: 0px;
+            width: 40px;
+            background-color: white;
+        }
+
+        #container {
+            width:85%;
+            float:right;
+            
+        }
+
+        #number_table {
+            max-width:90%;
+            margin:auto;
+        }
+        
+    </style>
+</head>
+
+<body onload="myFunction()">
+        <div class="floatingmenu">
+                <h2 style="text-align: left; padding-left: 5%;">Functions</h2>
+                <a href="Number system conversions.html" ">Number conversion</a><br>
+                <a href="Number system outputs.html" ">Number system outputs</a><br>
+                <a href="" ">Combinatorics</a><br>
+                <a href="" ">Truth tables</a><br>
+                <a href="RNG Tester.html" ">Random values</a><br>
+                <a href="" ">Design your own</a><br>
+            </div>
+    <div id="container">
+        <div id="number_table">
+        <h1 style="text-align: center;">Number system outputs</h2>
+            <table id="tbl">
+            </table>
+            <br>
+            <button type="button" onclick="myFunction()">Generate</button>
+            <button type="button" onclick="cleartable()">Clear</button>
+        </div>
+    </div>
+</body>
+
+</html>
