@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Project.css">
+    <title>Trigonometry</title>
+    <style>
+        body {
+            margin:0px;
+        }
+        #container {
+            float:right;
+            width:85%;     
+            text-align: center;      
+        }
+        .PiBtn {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        function addPi() {
+            document.getElementById("Pi").innerHTML="&Pi;";           
+            console.log("Pi added");
+        }
+        function removePi() {
+            document.getElementById("Pi").innerHTML="";
+            console.log("Pi removed");
+        }
+        function trigonometry() {
+            var type = document.getElementById("type").value;
+            var unit = document.getElementById("unit").value;
+            var input = Number(document.getElementById("number_input").value);
+            var result = Number;
+            var Pi=document.getElementById("Pi").innerText;
+            if (Pi!="") {
+                console.log("Pi:"+Pi);
+                input = input*Math.PI;
+                console.log("multiplied by Pi");
+                }
+            
+            if (type = "sin") {
+                if (unit == "degree") { result = Math.sin(input / 180 * Math.PI); }
+                else { result = Math.sin(input); }
+            }
+            if (type = "cos") {
+                if (unit == "degree") { result = Math.cos(input / 180 * Math.PI); }
+                else { result = Math.cos(input); }
+            }
+            if (type = "tan") {
+                if (unit == "degree") { result = Math.tan(input / 180 * Math.PI); }
+                else { result = Math.tan(input); }
+            }
+            if (type = "cot") {
+                if (unit == "degree") { result = 1/(Math.tan(input / 180 * Math.PI)); }
+                else { result = 1/(Math.tan(input)); }
+            }
+
+            document.getElementById("result").innerHTML = result;
+            console.log(type);
+            console.log("Input: "+input);
+            console.log(unit);
+            console.log(result);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="floatingmenu">
+        <h2 style="text-align: left; padding-left: 5%;">Functions</h2>
+        <a href="Number system conversions.html">Number conversion</a><br>
+        <a href="Number system outputs.html">Number system outputs</a><br>
+        <a href="">Combinatorics</a><br>
+        <a href="">Truth tables</a><br>
+        <a href="RNG Tester.html">Random values</a><br>
+        <a href="">Design your own</a><br>
+    </div>
+    <div id="container">
+        <h2>Trigonometry calculator</h2>
+        <select id="type">
+            <option value="sin">sin</option>
+            <option value="cos">cos</option>
+            <option value="tan">tan</option>
+            <option value="cot">cot</option>
+        </select>
+        (
+        <input id="number_input" type="number" style="width:50px;">
+        <span id="Pi" ></span>
+        <select id="unit">
+            <option value="degree">&deg;</option>
+            <<option value="rad">rad</option>
+        </select>
+        ) =
+        <span id="result"></span><br><br>
+        <button id="addPI" class="PiBtn" onclick="addPi()">Add &Pi;</button>
+        <button id="addPI" class="PiBtn" onclick="removePi()">Remove &Pi;</button><br>
+        <button id="calculate" onclick="trigonometry()">Calculate</button>
+    </div>
+</body>
+
+</html>
