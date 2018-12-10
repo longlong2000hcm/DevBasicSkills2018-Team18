@@ -5,6 +5,9 @@
     <link rel="stylesheet" type="text/css" href="Project.css">
     <title>Trigonometry</title>
     <style>
+        button {
+            background-color: orange;
+        }
         body {
             margin:0px;
         }
@@ -12,54 +15,70 @@
             float:right;
             width:85%;     
             text-align: center;      
+            font-size:150%;
         }
         .PiBtn {
             background-color: yellow;
         }
+        select, input {
+            font-size:100%;
+        }
+        #round {
+            background-color: lightblue;
+        }
+
     </style>
     <script>
+
+        var result = 0;
         function addPi() {
-            document.getElementById("Pi").innerHTML="&Pi;";           
+            document.getElementById("Pi").innerHTML = "&Pi;";
             console.log("Pi added");
         }
         function removePi() {
-            document.getElementById("Pi").innerHTML="";
+            document.getElementById("Pi").innerHTML = "";
             console.log("Pi removed");
         }
         function trigonometry() {
             var type = document.getElementById("type").value;
             var unit = document.getElementById("unit").value;
             var input = Number(document.getElementById("number_input").value);
-            var result = Number;
-            var Pi=document.getElementById("Pi").innerText;
-            if (Pi!="") {
-                console.log("Pi:"+Pi);
-                input = input*Math.PI;
+
+            var Pi = document.getElementById("Pi").innerText;
+            if (Pi != "") {
+                console.log("Pi:" + Pi);
+                input = input * Math.PI;
                 console.log("multiplied by Pi");
-                }
-            
-            if (type = "sin") {
+            }
+
+            if (type == "sin") {
                 if (unit == "degree") { result = Math.sin(input / 180 * Math.PI); }
                 else { result = Math.sin(input); }
             }
-            if (type = "cos") {
+            if (type == "cos") {
                 if (unit == "degree") { result = Math.cos(input / 180 * Math.PI); }
                 else { result = Math.cos(input); }
             }
-            if (type = "tan") {
+            if (type == "tan") {
                 if (unit == "degree") { result = Math.tan(input / 180 * Math.PI); }
                 else { result = Math.tan(input); }
             }
-            if (type = "cot") {
-                if (unit == "degree") { result = 1/(Math.tan(input / 180 * Math.PI)); }
-                else { result = 1/(Math.tan(input)); }
+            if (type == "cot") {
+                if (unit == "degree") { result = 1 / (Math.tan(input / 180 * Math.PI)); }
+                else { result = 1 / (Math.tan(input)); }
             }
 
             document.getElementById("result").innerHTML = result;
             console.log(type);
-            console.log("Input: "+input);
+            console.log("Input: " + input);
             console.log(unit);
             console.log(result);
+        }
+
+        function round() {
+            var rounded_result = document.getElementById("result").innerText;
+            rounded_result = Math.round(rounded_result * 100) / 100
+            document.getElementById("result").innerHTML = rounded_result;
         }
     </script>
 </head>
@@ -72,7 +91,7 @@
         <a href="">Combinatorics</a><br>
         <a href="">Truth tables</a><br>
         <a href="RNG Tester.html">Random values</a><br>
-        <a href="">Design your own</a><br>
+        <a href="Trigonometry.html">Trigonometry calculator</a><br>
     </div>
     <div id="container">
         <h2>Trigonometry calculator</h2>
@@ -83,8 +102,8 @@
             <option value="cot">cot</option>
         </select>
         (
-        <input id="number_input" type="number" style="width:50px;">
-        <span id="Pi" ></span>
+        <input id="number_input" type="number" style="width:100px;">
+        <span id="Pi"></span>
         <select id="unit">
             <option value="degree">&deg;</option>
             <<option value="rad">rad</option>
@@ -93,7 +112,8 @@
         <span id="result"></span><br><br>
         <button id="addPI" class="PiBtn" onclick="addPi()">Add &Pi;</button>
         <button id="addPI" class="PiBtn" onclick="removePi()">Remove &Pi;</button><br>
-        <button id="calculate" onclick="trigonometry()">Calculate</button>
+        <button id="calculate" onclick="trigonometry()">Calculate</button><br>
+        <button id="round" onclick="round()">Round to 2 decimal places</button>
     </div>
 </body>
 
