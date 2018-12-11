@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Truth tables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Project.css">
+    <style>
+        body {
+            margin:0px;
+        }
+        #container {
+            float:right;
+            width:85%; 
+            text-align: center;          
+            font-size: 150%;
+
+        }
+        table {
+            border-spacing: 0px;
+            border: 1px black solid;
+            margin: auto;
+        }
+        td,th {
+            width:75px;
+            border: 1px black solid;
+        }
+    </style>
+    <script>
+        function IS(arg) { return arg == 1; }
+        function NOT(arg) { return arg == 0; }
+
+        function OR(p, q) { return (p == 1 || q == 1); }
+        function NOR(p, q) { return NOT(OR(p, q)); }
+        function XOR(p, q) { return (p != q); }
+        function XNOR(p, q) { return NOT(XOR(p, q)); }
+
+        function AND(p, q) { return (IS(p) && IS(q)); }
+        function NAND(p, q) { return NOT(AND(p, q)); }
+
+        function converse_implication(p, q) { return NOT((NOT(p) && IS(q))); }
+        function converse_nonimplication(p, q) { return NOT(converse_implication(p, q)); }
+        function material_conditional(p, q) { return OR(NOT(p), IS(q)); }
+        function material_nonimplication(p, q) { return !material_conditional(p, q); }
+
+        function generate() {
+            var form = document.getElementById("form");
+            var p = form.input.value;
+            var q = form.input2.value;
+
+            document.getElementById("mytable").rows[1].cells[1].innerHTML = NOR(p, q);
+            document.getElementById("mytable").rows[1].cells[2].innerHTML = converse_nonimplication(p, q);
+            document.getElementById("mytable").rows[1].cells[3].innerHTML = NOT(p);
+            document.getElementById("mytable").rows[1].cells[4].innerHTML = material_nonimplication(p, q);
+            document.getElementById("mytable").rows[1].cells[5].innerHTML = NOT(q);
+            document.getElementById("mytable").rows[1].cells[6].innerHTML = XOR(p, q);
+            document.getElementById("mytable").rows[1].cells[7].innerHTML = NAND(p, q);
+            document.getElementById("mytable").rows[1].cells[8].innerHTML = AND(p, q);
+            document.getElementById("mytable").rows[1].cells[9].innerHTML = XNOR(p, q);
+            document.getElementById("mytable").rows[1].cells[10].innerHTML = IS(q);
+            document.getElementById("mytable").rows[1].cells[11].innerHTML = material_conditional(p, q);
+            document.getElementById("mytable").rows[1].cells[12].innerHTML = IS(p);
+            document.getElementById("mytable").rows[1].cells[13].innerHTML = converse_implication(p, q);
+            document.getElementById("mytable").rows[1].cells[14].innerHTML = OR(p, q);
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="floatingmenu">
+        <h2 style="text-align: left; padding-left: 5%;">Functions</h2>
+        <a href="Number system conversions.html" ">Number conversion</a><br>
+        <a href=" Number system outputs.html" ">Number system outputs</a><br>
+        <a href="Combinatorics.html" ">Combinatorics</a><br>
+        <a href="Truth Tables.html" ">Truth tables</a><br>
+        <a href=" RNG Tester.html">Random values</a><br>
+        <a href=" Trigonometry.html">Trigonometry calculator</a><br>
+    </div>
+    <div id="container">
+        <h2 style="text-align:center;">Truth tables</h2>
+        <table id="mytable">
+            <tr>
+                <th></th>
+                <th>NOR</th>
+                <th>CNI</th>
+                <th>!p</th>
+                <th>MNI</th>
+                <th>!q</th>
+                <th>XOR</th>
+                <th>NAND</th>
+                <th>AND</th>
+                <th>XNOR</th>
+                <th>q</th>
+                <th>MC</th>
+                <th>p</th>
+                <th>CI</th>
+                <th>OR</th>
+            </tr>
+            <tr>
+                <td>p q</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table><br>
+
+        <form id="form">
+            <label>Choose value of P: </label>
+            <input type="radio" name="input" value="1" checked>TRUE
+            <input type="radio" name="input" value="0">FALSE<br><br>
+            <label>Choose value of Q: </label>
+            <input type="radio" name="input2" value="1" checked>TRUE
+            <input type="radio" name="input2" value="0">FALSE<br><br>
+            <br><br>
+            <button type="button" id="myBtn" onclick="generate()">Generate</button>
+        </form>
+    </div>
+</body>
+
+</html>

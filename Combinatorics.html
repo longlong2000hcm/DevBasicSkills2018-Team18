@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Combinatorics</title>
+    <link rel="stylesheet" type="text/css" href="Project.css">
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        #container {
+            float: right;
+            width: 85%;
+            text-align: center;
+            font-size: 150%;
+            
+        }
+
+        table {
+            border-spacing: 0px;
+            border: 1px black solid;
+            margin: auto;
+        }
+
+        input {
+            font-size: 100%;
+            width:15%;
+        }
+        #replace_form {
+            width: 30%;
+            margin-left:20%;
+            text-align: left;
+        }
+    </style>
+    <script type="text/javascript" src="Combinations.js"></script>
+    <script>
+        function combine() {
+            var n = document.getElementById("Cn").value;
+            var r = document.getElementById("Cr").value;
+            var a = combination(n,r);
+            document.getElementById("answerC").innerHTML="Answer: "+a;
+        }
+
+        function replaceOrNot() {
+            var replaceOrNot = document.getElementById("replace_form").elements.replace.value;
+            var n = document.getElementById("Pn").value;
+            var r = document.getElementById("Pr").value;
+            if (replaceOrNot == "replace") { 
+                document.getElementById("answerP").innerHTML = "Answer: " + perm_replace(n,r); 
+            }
+            if (replaceOrNot == "noreplace") { 
+                document.getElementById("answerP").innerHTML = "Answer: " + perm_no_replace(n,r); 
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="floatingmenu">
+        <h2 style="text-align: left; padding-left: 5%;">Functions</h2>
+        <a href="Number system conversions.html" ">Number conversion</a><br>
+        <a href=" Number system outputs.html" ">Number system outputs</a><br>
+        <a href=" Combinatorics.html"">Combinatorics</a><br>
+        <a href=" Truth Tables.html" ">Truth tables</a><br>
+        <a href=" RNG Tester.html">Random values</a><br>
+        <a href=" Trigonometry.html">Trigonometry calculator</a><br>
+    </div>
+
+    <div id="container">
+
+        <h2>Combinatorics</h2>
+        <div style="display: flex">
+
+            <div style="float:left; width:50%; border-right:1px black solid ">
+                <h3>Combination</h3>
+                <input id="Cn">
+                C
+                <input id="Cr"><br><br><br><br>
+                <button type="button" onclick="combine()">Calculate</button><br><br>
+                <div id="answerC" style="margin-left:-25%;">Answer:</div>
+            </div>
+
+            <div style="float:right; width:50%;">
+                <h3>Permutation</h3>
+                <input id="Pn">
+                P
+                <input id="Pr"><br><br>
+                <form id="replace_form">
+                    <input type="radio" name="replace" value="replace" checked>Replace<br>
+                    <input type="radio" name="replace" value="noreplace">No replace
+                </form>
+                <button type="button" onclick="replaceOrNot()">Calculate</button><br><br>
+                <div id="answerP" style="margin-left:-35%;">Answer:</div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
