@@ -92,11 +92,10 @@
         }
 
         #converter {
-            max-width: 40%;
             margin: auto;
             font-size: 150%;
-            
             padding: 2%;
+            
         }
         input {
             font-size: 100%;
@@ -107,7 +106,7 @@
 
 <body>
     <div class="floatingmenu">
-        <h2 style="text-align: left; padding-left: 5%;">Functions</h2>
+        <h4 style="text-align: left; padding-left: 5%;">Functions</h4>
         <a href="Number system conversions.html" >Number conversion</a><br>
         <a href=" Number system outputs.html" >Number system outputs</a><br>
         <a href=" Combinatorics.html">Combinatorics</a><br>
@@ -118,6 +117,7 @@
     <div id="container">
             <div id="converter">
                 <h2 style="text-align:center;">Number converter</h2>
+                <div style="width:43%; margin:auto;">
                 <form id="form">
                     <label>Choose input type: </label>
                     <input type="radio" name="input" value="BIN">BIN
@@ -135,6 +135,7 @@
                     <button type="button" id="myBtn" onclick="convert()">Convert</button>
 
                 </form>
+                </div>
             </div>
     </div>
 

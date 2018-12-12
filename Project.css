@@ -1,5 +1,5 @@
 .floatingmenu {
-    overflow: hidden;
+    overflow: auto;
     position: fixed;
     float: left;
     width:15%;
