@@ -25,6 +25,8 @@
         }
     </style>
     <script>
+        function TRUE() {return true};
+        function FALSE() {return false};
         function IS(arg) { return arg == 1; }
         function NOT(arg) { return arg == 0; }
 
@@ -35,6 +37,8 @@
 
         function AND(p, q) { return (IS(p) && IS(q)); }
         function NAND(p, q) { return NOT(AND(p, q)); }
+        function returnP() {if (p==1) {return "true";} else {return "false";}}
+        function returnQ() {if (q==1) {return "true";} else {return "false";}}
 
         function converse_implication(p, q) { return NOT((NOT(p) && IS(q))); }
         function converse_nonimplication(p, q) { return NOT(converse_implication(p, q)); }
@@ -46,20 +50,22 @@
             var p = form.input.value;
             var q = form.input2.value;
 
-            document.getElementById("mytable").rows[1].cells[1].innerHTML = NOR(p, q);
-            document.getElementById("mytable").rows[1].cells[2].innerHTML = converse_nonimplication(p, q);
-            document.getElementById("mytable").rows[1].cells[3].innerHTML = NOT(p);
-            document.getElementById("mytable").rows[1].cells[4].innerHTML = material_nonimplication(p, q);
-            document.getElementById("mytable").rows[1].cells[5].innerHTML = NOT(q);
-            document.getElementById("mytable").rows[1].cells[6].innerHTML = XOR(p, q);
-            document.getElementById("mytable").rows[1].cells[7].innerHTML = NAND(p, q);
-            document.getElementById("mytable").rows[4].cells[1].innerHTML = AND(p, q);
-            document.getElementById("mytable").rows[4].cells[2].innerHTML = XNOR(p, q);
-            document.getElementById("mytable").rows[4].cells[3].innerHTML = IS(q);
-            document.getElementById("mytable").rows[4].cells[4].innerHTML = material_conditional(p, q);
-            document.getElementById("mytable").rows[4].cells[5].innerHTML = IS(p);
-            document.getElementById("mytable").rows[4].cells[6].innerHTML = converse_implication(p, q);
-            document.getElementById("mytable").rows[4].cells[7].innerHTML = OR(p, q);
+            document.getElementById("mytable").rows[1].cells[0].innerHTML = FALSE();
+            document.getElementById("mytable").rows[1].cells[1].innerHTML = AND(p,q);
+            document.getElementById("mytable").rows[1].cells[2].innerHTML = XOR(p, q);
+            document.getElementById("mytable").rows[1].cells[3].innerHTML = OR(p,q);
+            document.getElementById("mytable").rows[1].cells[4].innerHTML = NOR(p, q);
+            document.getElementById("mytable").rows[1].cells[5].innerHTML = XNOR(p, q);
+            document.getElementById("mytable").rows[1].cells[6].innerHTML = NAND(p, q);
+            document.getElementById("mytable").rows[1].cells[7].innerHTML = TRUE();
+            document.getElementById("mytable").rows[4].cells[0].innerHTML = IS(p);
+            document.getElementById("mytable").rows[4].cells[1].innerHTML = NOT(p);
+            document.getElementById("mytable").rows[4].cells[2].innerHTML = IS(q);
+            document.getElementById("mytable").rows[4].cells[3].innerHTML = NOT(q);
+            document.getElementById("mytable").rows[4].cells[4].innerHTML = converse_implication(p, q);
+            document.getElementById("mytable").rows[4].cells[5].innerHTML = converse_nonimplication(p, q);
+            document.getElementById("mytable").rows[4].cells[6].innerHTML = material_conditional(p, q);
+            document.getElementById("mytable").rows[4].cells[7].innerHTML = material_nonimplication(p, q);
 
         }
     </script>
@@ -79,17 +85,17 @@
         <h2 style="text-align:center;">Truth tables</h2>
         <table id="mytable">
             <tr>
-                <th></th>
+                <th>FALSE</th>
+                <th>&and;</th>
+                <th>&oplus;</th>
+                <th>&or;</th>
                 <th>NOR</th>
-                <th>CNI</th>
-                <th>!p</th>
-                <th>MNI</th>
-                <th>!q</th>
-                <th>XOR</th>
+                <th>XNOR</th>
                 <th>NAND</th>
+                <th>TRUE</th>
             </tr>
             <tr>
-                <td>P Q</td>
+                <td>&nbsp;</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -100,17 +106,17 @@
             </tr>
             <tr style="height:20px; border:0px;"></tr>
             <tr>
-                <th></th>
-                <th>AND</th>
-                <th>XNOR</th>
-                <th>q</th>
-                <th>MC</th>
-                <th>p</th>
+                <th>P</th>
+                <th>&not;P</th>
+                <th>Q</th>
+                <th>&not;Q</th>
                 <th>CI</th>
-                <th>OR</th>
+                <th>NCI</th>
+                <th>MC</th>
+                <th>NMC</th>
             </tr>
             <tr>
-                <td>P Q</td>
+                <td>&nbsp;</td>
                 <td></td>
                 <td></td>
                 <td></td>
